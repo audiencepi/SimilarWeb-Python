@@ -1,12 +1,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-VERSION = '0.0.1'
-
-with open('requirements.txt', 'r') as required_files:
-    install_requires = []
-    for row in required_files:
-        install_requires.append(row.strip())
+VERSION = '0.0.2'
 
 setup_args = dict(
     name='SimilarWeb-Python',
@@ -16,7 +11,7 @@ setup_args = dict(
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=["requests", "tldextract"],
     author='Ryan Liao',
     author_email='pirsquare.ryan@gmail.com',
     classifiers=[
