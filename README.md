@@ -46,7 +46,9 @@ client = similarweb.TrafficAPI(api_key, domain, start_month,
                                main_domain_only)
 results = client.query()
 
+#================================
 # RankAndReachAPI
+#================================
 client = similarweb.RankAndReachAPI(api_key, domain)
 results = client.query()
 
@@ -104,7 +106,9 @@ category = "United States"
 client = similarweb.TopSitesAPI(api_key, domain)
 results = client.query()
 
+#================================
 # SocialReferralsAPI
+#================================
 client = similarweb.SocialReferralsAPI(api_key, domain)
 results = client.query()
 
