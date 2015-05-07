@@ -102,8 +102,8 @@ category = "Shopping~Sports"
 # If left blank, `Worldwide` will be requested.
 # Use `http://api.similarweb.com/v1/TopSites/countries`
 # to get a list of available categories.
-category = "United States"
-client = similarweb.TopSitesAPI(api_key, domain)
+country = "United States"
+client = similarweb.TopSitesAPI(api_key, domain, category, country)
 results = client.query()
 
 #================================
