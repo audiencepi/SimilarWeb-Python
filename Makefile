@@ -10,7 +10,7 @@ clean:
 	find . -name "*.py[co]" -delete
 
 unit:
-	nosetests --with-coverage --cover-package=bigquery_gcs
+	nosetests --with-coverage --cover-package=similarweb
 
 publish:
 	python setup.py sdist upload
