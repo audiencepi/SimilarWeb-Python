@@ -1,36 +1,16 @@
-SHELL := /bin/bash
-PYTHON := python
-PIP := pip
+deps:
+	pip install -r requirements.txt
 
-BUILD_DIR := .build
+deps-dev:
+	pip install -r requirements_dev.txt
 
-all: deps
+test: clean unit
 
 clean:
 	find . -name "*.py[co]" -delete
 
-distclean: clean
-	rm -rf $(BUILD_DIR)
-	rm -rf $(LIBS_DIR)
-
-test: clean integrations
-deps: py_dev_deps py_deploy_deps
-
-py_deploy_deps: $(BUILD_DIR)/pip-deploy.out
-
-py_dev_deps: $(BUILD_DIR)/pip-dev.out
-
-$(BUILD_DIR)/pip-deploy.out: requirements.txt
-	@mkdir -p $(BUILD_DIR)
-	$(PIP) install -Ur $< && touch $@
-
-$(BUILD_DIR)/pip-dev.out: requirements_dev.txt
-	@mkdir -p $(BUILD_DIR)
-	$(PIP) install -Ur $< && touch $@
-
 unit:
-	nosetests
+	nosetests --with-coverage --cover-package=bigquery_gcs
 
-integrations:
-	nosetests --with-coverage --cover-package=similarweb
-
+publish:
+	python setup.py sdist upload
